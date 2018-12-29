@@ -66,13 +66,13 @@ class requirement2 extends java.io.Serializable {
     //(2018-12-22,Map(12 -> 45, 15 -> 41, 09 -> 36, 00 -> 49, 21 -> 55, 18 -> 48, 03 -> 40, 06 -> 48, 17 -> 49,
     // 05 -> 43, 11 -> 49, 08 -> 62, 14 -> 49, 20 -> 57, 02 -> 41, 01 -> 43, 22 -> 50, 16 -> 44, 19 -> 61, 04 -> 48,
     // 10 -> 51, 13 -> 59, 07 -> 43))
-    val hourRadomSessionList = getHourRadomSessionList(sparkSession,sessionID2FullInfoRDD.count(), 150, dateHourCountType)
+    val hourRadomSessionList = getHourRadomSessionList(sparkSession, sessionID2FullInfoRDD.count(), 150, dateHourCountType)
     //(2018-12-22,Map(12 -> List(11, 23, 30, 0, 10, 20), 15 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1),
     // 09 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31),
     // 00 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32),
     // 21 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8), 18 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36), 03 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36, 9, 25), 06 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36, 9, 25, 28, 35, 39), 17 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36, 9, 25, 28, 35, 39, 27), 05 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36, 9, 25, 28, 35, 39, 27), 11 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36, 9, 25, 28, 35, 39, 27, 19, 21, 24), 08 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36, 9, 25, 28, 35, 39, 27, 19, 21, 24, 6, 18, 55), 14 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36, 9, 25, 28, 35, 39, 27, 19, 21, 24, 6, 18, 55, 17, 2, 47, 29), 20 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36, 9, 25, 28, 35, 39, 27, 19, 21, 24, 6, 18, 55, 17, 2, 47, 29, 16, 26, 49), 02 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36, 9, 25, 28, 35, 39, 27, 19, 21, 24, 6, 18, 55, 17, 2, 47, 29, 16, 26, 49), 22 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36, 9, 25, 28, 35, 39, 27, 19, 21, 24, 6, 18, 55, 17, 2, 47, 29, 16, 26, 49, 41, 4, 13), 01 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36, 9, 25, 28, 35, 39, 27, 19, 21, 24, 6, 18, 55, 17, 2, 47, 29, 16, 26, 49, 41), 16 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36, 9, 25, 28, 35, 39, 27, 19, 21, 24, 6, 18, 55, 17, 2, 47, 29, 16, 26, 49, 41, 4, 13), 10 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36, 9, 25, 28, 35, 39, 27, 19, 21, 24, 6, 18, 55, 17, 2, 47, 29, 16, 26, 49, 41, 4, 13, 58, 54, 38, 50), 04 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36, 9, 25, 28, 35, 39, 27, 19, 21, 24, 6, 18, 55, 17, 2, 47, 29, 16, 26, 49, 41, 4, 13, 58, 54, 38), 19 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36, 9, 25, 28, 35, 39, 27, 19, 21, 24, 6, 18, 55, 17, 2, 47, 29, 16, 26, 49, 41, 4, 13, 58, 54), 13 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36, 9, 25, 28, 35, 39, 27, 19, 21, 24, 6, 18, 55, 17, 2, 47, 29, 16, 26, 49, 41, 4, 13, 58, 54, 38, 50), 07 -> List(11, 23, 30, 0, 10, 20, 34, 7, 22, 1, 31, 5, 12, 32, 40, 42, 33, 37, 15, 8, 36, 9, 25, 28, 35, 39, 27, 19, 21, 24, 6, 18, 55, 17, 2, 47, 29, 16, 26, 49, 41, 4, 13, 58, 54, 38, 50)))
 
-    val m = getFinalData(sparkSession,taskUUID,hourRadomSessionList,actionsTypeByDateHour)
+    getFinalData(sparkSession, taskUUID, hourRadomSessionList, actionsTypeByDateHour)
   }
 
 
@@ -84,9 +84,19 @@ class requirement2 extends java.io.Serializable {
   def getActionsTypeByDateAndHour(sessionID2FullInfoRDD: RDD[(String, String)]): RDD[(String, String)] = {
     val dateHour2FullInfoRDD = sessionID2FullInfoRDD.map {
       case (sessionID, fullInfo) =>
-        val timeArr = fullInfo.split("\\|") {5}.split("=") {1}.split(" ")
-        val date = timeArr {0}
-        val hour = timeArr {1}.split(":") {0}
+        val timeArr = fullInfo.split("\\|") {
+          5
+        }.split("=") {
+          1
+        }.split(" ")
+        val date = timeArr {
+          0
+        }
+        val hour = timeArr {
+          1
+        }.split(":") {
+          0
+        }
         (date + hour, fullInfo)
     }
     dateHour2FullInfoRDD.collect()
@@ -126,7 +136,7 @@ class requirement2 extends java.io.Serializable {
     * @param date_hour_count      一天内每小时的session数
     **/
   def getHourRadomSessionList(sparkSession: SparkSession,
-                               sessionCount: Long,
+                              sessionCount: Long,
                               getSessionCountInput: Long,
                               date_hour_count: mutable.HashMap[String, mutable.HashMap[String, Long]]) = {
     var getSessionCount: Long = getSessionCountInput
@@ -135,14 +145,14 @@ class requirement2 extends java.io.Serializable {
     }
     var date_hour_list = new mutable.HashMap[String, mutable.HashMap[String, List[Int]]]
     val random = new Random()
-     val rss = date_hour_count.map {
+    val rss = date_hour_count.map {
       case (date, hourCountMap) =>
         date_hour_list.get(date) match {
           case None =>
             date_hour_list(date) = new mutable.HashMap[String, List[Int]]()
             for (hourCount <- hourCountMap) {
               var hourList: List[Int] = Nil
-              val getHourSessionCount = (hourCount._2 * getSessionCount)/sessionCount + 1
+              val getHourSessionCount = (hourCount._2 * getSessionCount) / sessionCount + 1
               for (i <- 1 to getHourSessionCount.toInt) {
                 val r = random.nextInt(hourCount._2.toInt)
                 if (!hourList.contains(r)) {
@@ -154,7 +164,7 @@ class requirement2 extends java.io.Serializable {
           case Some(someMap) =>
             for (hourCount <- hourCountMap) {
               var hourList: List[Int] = Nil
-              val getHourSessionCount = (hourCount._2 * getSessionCount)/sessionCount
+              val getHourSessionCount = (hourCount._2 * getSessionCount) / sessionCount
               for (i <- 1 to getHourSessionCount.toInt) {
                 val r = random.nextInt(hourCount._2.toInt)
                 if (!hourList.exists(s => s == r)) {
@@ -174,31 +184,31 @@ class requirement2 extends java.io.Serializable {
   /**
     * 按照已获得的hourRadomSessionList及数据信息抽取数据并写入数据库
     *
-    * */
+    **/
   def getFinalData(sparkSession: SparkSession,
                    taskUUID: String,
-                   hourRadomSessionList:mutable.HashMap[String, mutable.HashMap[String, List[Int]]],
-                   actionsTypeByDateHour:RDD[(String, String)]) ={
+                   hourRadomSessionList: mutable.HashMap[String, mutable.HashMap[String, List[Int]]],
+                   actionsTypeByDateHour: RDD[(String, String)]) = {
     val date_hour_listBd = sparkSession.sparkContext.broadcast(hourRadomSessionList)
     println()
     val dateHour2GroupRDD = actionsTypeByDateHour.groupByKey()
-    val extractSessionRDD = dateHour2GroupRDD.flatMap{
-      case (dateHour,iterableFullInfo) =>
-        val date = dateHour.substring(0,10)
-        val hour = dateHour.substring(10,12)
+    val extractSessionRDD = dateHour2GroupRDD.flatMap {
+      case (dateHour, iterableFullInfo) =>
+        val date = dateHour.substring(0, 10)
+        val hour = dateHour.substring(10, 12)
 
         val extractList = hourRadomSessionList.get(date).get(hour)
 
         val extractSessionArrayBuffer = new ArrayBuffer[SessionRandomExtract]()
 
         var index = 0
-        for (fullInfo <- iterableFullInfo){
-          if (extractList.contains(index)){
-            val sessionid = StringUtils.getFieldFromConcatString(fullInfo,"\\|",Constants.FIELD_SESSION_ID)
-            val startTime = StringUtils.getFieldFromConcatString(fullInfo,"\\|",Constants.FIELD_START_TIME)
-            val searchKeywords = StringUtils.getFieldFromConcatString(fullInfo,"\\|",Constants.FIELD_SEARCH_KEYWORDS)
-            val clickCategoryIds = StringUtils.getFieldFromConcatString(fullInfo,"\\|",Constants.FIELD_CLICK_CATEGORY_IDS)
-            extractSessionArrayBuffer.append(SessionRandomExtract(taskUUID,sessionid,startTime,searchKeywords,clickCategoryIds))
+        for (fullInfo <- iterableFullInfo) {
+          if (extractList.contains(index)) {
+            val sessionid = StringUtils.getFieldFromConcatString(fullInfo, "\\|", Constants.FIELD_SESSION_ID)
+            val startTime = StringUtils.getFieldFromConcatString(fullInfo, "\\|", Constants.FIELD_START_TIME)
+            val searchKeywords = StringUtils.getFieldFromConcatString(fullInfo, "\\|", Constants.FIELD_SEARCH_KEYWORDS)
+            val clickCategoryIds = StringUtils.getFieldFromConcatString(fullInfo, "\\|", Constants.FIELD_CLICK_CATEGORY_IDS)
+            extractSessionArrayBuffer.append(SessionRandomExtract(taskUUID, sessionid, startTime, searchKeywords, clickCategoryIds))
           }
           index += 1
         }

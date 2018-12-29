@@ -136,3 +136,16 @@ case class SessionDetail(taskid:String,
                          orderProductIds:String,
                          payCategoryIds:String,
                          payProductIds:String)
+/**
+  * 品类Top10表
+  * @param task_id
+  * @param category_id
+  * @param click_count
+  * @param order_count
+  * @param pay_count
+  */
+case class Top10Category(task_id:String,
+                         category_id:Long,
+                         click_count:Long,
+                         order_count:Long,
+                         pay_count:Long)

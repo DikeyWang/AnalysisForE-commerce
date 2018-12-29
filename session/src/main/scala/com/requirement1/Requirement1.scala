@@ -205,6 +205,7 @@ class Requirement1 extends java.io.Serializable {
       }
     }
     sessionID2FilterRDD.collect()
+    sessionID2FilterRDD
   }
 
   //步长计数器规则
