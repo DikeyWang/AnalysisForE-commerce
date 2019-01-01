@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="commons" />
         <module name="mock" />
+        <module name="PageConvertStat" />
         <module name="session" />
       </profile>
     </annotationProcessing>
@@ -15,6 +16,8 @@
       <module name="commerce" target="1.8" />
       <module name="commons" target="1.8" />
       <module name="mock" target="1.8" />
+      <module name="PageconvertStat" target="1.8" />
+      <module name="PageConvertStat" target="1.8" />
       <module name="session" target="1.8" />
     </bytecodeTargetLevel>
   </component>

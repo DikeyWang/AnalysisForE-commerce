@@ -149,3 +149,18 @@ case class Top10Category(task_id:String,
                          click_count:Long,
                          order_count:Long,
                          pay_count:Long)
+
+
+/**
+  * Top10 Session
+  *
+  * @param task_id
+  * @param category_id
+  * @param session_id
+  * @param click_count
+  */
+case class Top10Session(task_id: String,
+                        category_id: Long,
+                        session_id: String,
+                        click_count: Long)
+

@@ -3,10 +3,9 @@ package com.requirement3
 import java.util.UUID
 
 import com.CaseClass.SortKey
-import com.requirement1.SessionStatAccumulator
 import commons.conf.ConfigurationManager
 import commons.constant.Constants
-import commons.model.{Top10Category, UserVisitAction}
+import commons.model.{Top10Category, Top10Session, UserVisitAction}
 import commons.utils.{ParamUtils, StringUtils, ValidUtils}
 import net.sf.json.JSONObject
 import org.apache.spark.SparkConf
@@ -16,6 +15,7 @@ import org.apache.spark.sql.{SaveMode, SparkSession}
 import scala.collection.mutable.ArrayBuffer
 
 class Requirement3 extends java.io.Serializable {
+
   def doRequireMent3() = {
     val borrowRequire1 = new com.requirement1.Requirement1
     //创建配置对象
@@ -68,12 +68,33 @@ class Requirement3 extends java.io.Serializable {
     // UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,0,2018-12-22 8:18:27,null,25,40,null,null,null,null,7), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,4,2018-12-22 8:26:30,null,63,39,null,null,null,null,4),
     // UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,0,2018-12-22 8:43:31,小龙虾,-1,-1,null,null,null,null,7), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,1,2018-12-22 8:43:28,null,-1,-1,null,null,8,53,1), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,5,2018-12-22 8:32:02,null,-1,-1,null,null,40,92,7), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,6,2018-12-22 8:00:55,null,91,20,null,null,null,null,8), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,6,2018-12-22 8:53:50,null,20,56,null,null,null,null,7), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,5,2018-12-22 8:52:50,null,88,50,null,null,null,null,7), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,9,2018-12-22 8:50:52,null,-1,-1,60,50,null,null,0), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,5,2018-12-22 8:46:47,null,-1,-1,null,null,72,44,6), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,9,2018-12-22 8:44:36,null,-1,-1,null,null,73,54,9), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,2,2018-12-22 8:29:07,null,-1,-1,null,null,96,79,4), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,9,2018-12-22 8:23:53,null,23,52,null,null,null,null,0), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,6,2018-12-22 8:19:54,null,-1,-1,70,76,null,null,0), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,8,2018-12-22 8:15:29,null,-1,-1,null,null,46,4,1), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,9,2018-12-22 8:40:03,null,-1,-1,null,null,63,10,6), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,4,2018-12-22 8:02:30,联想笔记本,-1,-1,null,null,null,null,2), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,0,2018-12-22 8:13:38,苹果,-1,-1,null,null,null,null,6), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,2,2018-12-22 8:48:54,null,-1,-1,81,19,null,null,6), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,6,2018-12-22 8:23:26,null,-1,-1,null,null,5,55,0), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,0,2018-12-22 8:47:57,null,-1,-1,null,null,31,33,3), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,0,2018-12-22 8:26:44,null,-1,-1,null,null,20,90,5), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,3,2018-12-22 8:39:19,null,46,33,null,null,null,null,2), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,2,2018-12-22 8:32:14,null,-1,-1,null,null,6,2,2), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,8,2018-12-22 8:25:50,null,-1,-1,null,null,96,43,6), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,6,2018-12-22 8:12:28,null,-1,-1,null,null,18,32,6), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,3,2018-12-22 8:28:19,null,-1,-1,48,89,null,null,4), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,9,2018-12-22 8:51:00,null,-1,-1,89,37,null,null,9), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,7,2018-12-22 8:55:11,null,64,61,null,null,null,null,8), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,8,2018-12-22 8:47:17,null,44,16,null,null,null,null,0), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,6,2018-12-22 8:06:58,null,85,45,null,null,null,null,9), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,4,2018-12-22 8:16:20,null,-1,-1,96,67,null,null,2), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,6,2018-12-22 8:25:54,null,-1,-1,null,null,22,51,9), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,4,2018-12-22 8:12:17,null,-1,-1,69,18,null,null,1), UserVisitAction(2018-12-22,20,f3f5404fa2754b5f9fdad3ee4967e7c5,3,2018-12-22 8:37:51,联想笔记本,-1,-1,null,null,null,null,1)))
 
-    getTop10Categories(sparkSession, taskUUID, sessionid2FilterActionRDD)
+    //写入数据库并返回top10相关信息，以供需求四调用
+    val top10CategoriesArr = getTop10Categories(sparkSession, taskUUID, sessionid2FilterActionRDD)
+    /** *********************需求三至此结束，以下开始需求四 ******************************/
+    //点击过top商品的action
+    val clickForTop10Session = sessionid2FilterActionRDD.filter {
+      case (sessionID, action) =>
+        top10CategoriesArr.contains(action.click_category_id)
+    }
+
+    val clickSession = clickForTop10Session.map {
+      case (sessionID, action) =>
+        (action.click_category_id, (sessionID, 1l))
+    }
+    //(16,(3477b99b07a04acb84df5e907682b9d2,1))
+    //(61,(3477b99b07a04acb84df5e907682b9d2,1))
+    //(70,(3890ef9ca24c4311833a27bee1f7067c,1))
+    getTop10Session(sparkSession, taskUUID, clickSession)
 
 
   }
 
-
+  /**
+    * 获取过滤文件并返回过滤后的数据
+    *
+    * @param taskParam             过滤条件
+    * @param sessionID2FullInfoRDD 原始文件
+    **/
   def getFilterData(taskParam: JSONObject,
                     sessionID2FullInfoRDD: RDD[(String, String)]) = {
 
@@ -117,6 +138,11 @@ class Requirement3 extends java.io.Serializable {
     sessionID2FilterRDD
   }
 
+  /**
+    * @param sparkSession
+    * @param taskUUID 当前任务id
+    * @param sessionid2FilterActionRDD
+    * */
   def getTop10Categories(sparkSession: SparkSession,
                          taskUUID: String,
                          sessionid2FilterActionRDD: RDD[(String, UserVisitAction)]) = {
@@ -139,6 +165,7 @@ class Requirement3 extends java.io.Serializable {
     }
     //去重
     val cid2CidRDDm = cid2CidRDD.distinct()
+    // 获取三个数据量的RDD
     val clickCount = getClickCount(sessionid2FilterActionRDD)
     val orderCount = getOrderCount(sessionid2FilterActionRDD)
     val payCount = getPayCount(sessionid2FilterActionRDD)
@@ -154,26 +181,29 @@ class Requirement3 extends java.io.Serializable {
         (sortKeyT, countInfo)
     }
     //false 参数则降序，不传参默认升序
+    //(SortKey(89,68,78),categoryid=66|clickCount=89|orderCount=68|payCount=78)
     val top10CateArr = sortKeyFullInfo.sortByKey(false).take(10)
 
-    val top10CateRDD = sparkSession.sparkContext.makeRDD(top10CateArr).map {
-      case (sortKey, countInfo) =>
-        val cid = StringUtils.getFieldFromConcatString(countInfo, "\\|", Constants.FIELD_CATEGORY_ID).toLong
-        val clickCount = sortKey.clickCount
-        val orderCount = sortKey.orderCount
-        val payCount = sortKey.payCount
+    /*    val top10CateRDD = sparkSession.sparkContext.makeRDD(top10CateArr).map {
+          case (sortKey, countInfo) =>
+            val cid = StringUtils.getFieldFromConcatString(countInfo, "\\|", Constants.FIELD_CATEGORY_ID).toLong
+            val clickCount = sortKey.clickCount
+            val orderCount = sortKey.orderCount
+            val payCount = sortKey.payCount
 
-        Top10Category(taskUUID, cid, clickCount, orderCount, payCount)
-    }
+            Top10Category(taskUUID, cid, clickCount, orderCount, payCount)
+        }
 
-    import sparkSession.implicits._
-    top10CateRDD.toDF().write.format("jdbc")
-      .option("url", ConfigurationManager.config.getString(Constants.JDBC_URL))
-      .option("user", ConfigurationManager.config.getString(Constants.JDBC_USER))
-      .option("password", ConfigurationManager.config.getString(Constants.JDBC_PASSWORD))
-      .option("dbtable", "top10_category")
-      .mode(SaveMode.Append)
-      .save()
+        import sparkSession.implicits._
+        top10CateRDD.toDF().write.format("jdbc")
+          .option("url", ConfigurationManager.config.getString(Constants.JDBC_URL))
+          .option("user", ConfigurationManager.config.getString(Constants.JDBC_USER))
+          .option("password", ConfigurationManager.config.getString(Constants.JDBC_PASSWORD))
+          .option("dbtable", "top10_category")
+          .mode(SaveMode.Append)
+          .save()*/
+
+    top10CateArr.map(item => StringUtils.getFieldFromConcatString(item._2, "\\|", "categoryid").toLong)
 
   }
 
@@ -232,4 +262,45 @@ class Requirement3 extends java.io.Serializable {
     }
     fullCountInfo
   }
+
+  def getTop10Session(sparkSession: SparkSession, taskUUID: String, clickSession: RDD[(Long, (String, Long))]) = {
+
+    val cid_sessionCount = clickSession.groupByKey().map {
+      case (cid, iterable) =>
+        val sessionCountMap = scala.collection.mutable.HashMap[String, Long]()
+        for ((session, 1) <- iterable) {
+          if (!sessionCountMap.contains(session)) {
+            sessionCountMap += (session -> 0l)
+          }
+          sessionCountMap(session) = sessionCountMap(session) + 1
+        }
+        (cid, sessionCountMap)
+    }.collect()
+
+    cid_sessionCount.length
+    val top10Session = cid_sessionCount.map {
+      case (cid, sessionCountMap) =>
+        (cid, sessionCountMap.toList.sortBy(-_._2).take(10))
+    }
+
+    val top10Arr = ArrayBuffer[Top10Session]()
+    top10Session.map {
+      case (cid, sessionCountList) =>
+        for ((session, count) <- sessionCountList) {
+          top10Arr.append(Top10Session(taskUUID, cid, session, count))
+        }
+    }
+    val top10RDD = sparkSession.sparkContext.makeRDD(top10Arr)
+
+    import sparkSession.implicits._
+    top10RDD.toDF().write.format("jdbc")
+      .option("url", ConfigurationManager.config.getString(Constants.JDBC_URL))
+      .option("user", ConfigurationManager.config.getString(Constants.JDBC_USER))
+      .option("password", ConfigurationManager.config.getString(Constants.JDBC_PASSWORD))
+      .option("dbtable", "top10_session")
+      .mode(SaveMode.Append)
+      .save()
+  }
+
+
 }

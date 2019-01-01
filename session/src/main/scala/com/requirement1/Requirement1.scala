@@ -22,7 +22,6 @@ class Requirement1 extends java.io.Serializable {
     //将字符串转化为JSON对象，以便于下一步处理
     //此处的JSON对象用于数据初筛选，筛选条件在该JSON字符串中可做修改
     val taskParams = JSONObject.fromObject(jsonStr)
-
     //生成UUID作为当前任务的ID
     val taskUUID = UUID.randomUUID().toString
     //获取sparkConf
@@ -36,7 +35,6 @@ class Requirement1 extends java.io.Serializable {
     //UserVisitAction(2018-12-18,68,960ada8a169f41fcbc55b27a9b4a6271,9,2018-12-18 3:11:24,null,6,35,null,null,null,null,9)
     //UserVisitAction(2018-12-18,68,960ada8a169f41fcbc55b27a9b4a6271,6,2018-12-18 3:35:25,null,-1,-1,null,null,27,22,4)
     val userVisitActionsRDD = getActiveRDD(sparkSession, taskParams)
-
     //将userVisitActionRDD中的每个userVisitAction转换为(userVisitAction.session_id,userVisitAction)的二元组
     val actionsTypeBySession = userVisitActionsRDD.map(userVisitAction => (userVisitAction.session_id, userVisitAction))
     //groupbykey，将actionsTypeBySession转换为斧形数据(k,iteratable)
